@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>昱科环球</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/animate.css">-->
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+<div class="content_body">
+    <img src="image/logo_top.png" class="logo_top"/>
+
+    <form name="myForm" class="men_form " method="post" action="index.html">
+        <div class="men_form-son men_form1">
+            <img src="image/admin.png" class="ionic1"/>
+            <input type="text" class="men" name="name" placeholder="请输入您的姓名"/>
+        </div>
+
+        <div class="men_form-son men_form2">
+            <img src="image/password.png" class="ionic1 ionic2"/>
+            <input type="text" class="men password" name="password" placeholder="请输入您的手机号码"/>
+        </div>
+
+        <div class="submit wave" onclick="validateForm()">认证</div>
+    </form>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js"></script>
+<script>
+    window.onload=function(e){
+        var _body=document.getElementsByTagName('body')[0];
+        _body.style.height=_body.clientHeight+"px";
+    };
+    function validateForm(){
+        let  x=document.forms["myForm"]["name"].value;
+        if (x==null || x==""){
+            layer.alert("姓名必须填写");
+            return false;
+        };
+        let  y=document.forms["myForm"]["password"].value;
+        if (y==null || y==""){
+            layer.alert("手机号码必须填写");
+            return false;
+        }
+    }
+
+</script>
+</body>
+</html>

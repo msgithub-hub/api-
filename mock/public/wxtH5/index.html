@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>吾谐堂</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+</head>
+<body>
+<div class="swiper-container home">
+    <!--音乐盒-->
+    <!--<div class="song">-->
+        <!--<img src="image/music.png" id="nyMusic_btn" class="title-tou-yyue">-->
+        <!--<audio id="bgMusic" src="image/song.mp3" autoplay="autoplay" loop="loop"></audio>-->
+    <!--</div>-->
+
+    <div class="swiper-wrapper">
+        <!--1首页-->
+        <section class="swiper-slide page_all">
+            <img src="image/1a.png" class="tittle_one ani"  swiper-animate-effect="bounceInDown" swiper-animate-duration="1.2s">
+            <img src="image/1b.png" class="tittle_two ani" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1.5s">
+            <img src="image/1c.png" class="tittle_three ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="1.8s">
+            <img class="in_down" src="image/in_up.png">
+        </section>
+
+
+        <!--2画面-->
+        <section class="swiper-slide page_all">
+
+            <img src="image/2a.png" class="word1 ani" swiper-animate-effect="fadeInLeft"
+                 swiper-animate-duration="1.0s">
+
+            <img src="image/2b.png" class="word2 ani" swiper-animate-effect="fadeInRight"
+                 swiper-animate-duration="1.5s">
+            <img class="in_down" src="image/in_up.png">
+        </section>
+
+
+        <!--3画面-->
+        <section class="swiper-slide page_all">
+
+            <img src="image/3a.png" class="pic3-img1 ani" swiper-animate-effect="rotateIn" swiper-animate-duration="1.5s">
+
+            <img src="image/3b.png" class="pic3-img2 ani" swiper-animate-effect="bounceInLeft " swiper-animate-duration="1.7s">
+
+            <img src="image/3c.png" class="pic3-img3 ani" swiper-animate-effect="bounceInUp " swiper-animate-duration="1.9s">
+
+            <img class="in_down" src="image/in_up.png">
+        </section>
+
+
+        <!--4画面-->
+        <section class="swiper-slide page_all">
+
+             <img src="image/4a.png" class="tittle4-img1 ani" swiper-animate-effect="bounceInDown " swiper-animate-duration="1.3s">
+
+            <img src="image/4b.png" class="tittle4-img4 ani" swiper-animate-effect="bounceInUp " swiper-animate-duration="1.5s">
+
+            <img class="in_down" src="image/in_up.png">
+        </section>
+
+        <!--5画面-->
+        <section class="swiper-slide page_all">
+
+            <img src="image/H5_5a.png" class="tittle5-img1 ani" swiper-animate-effect="bounceInDown " swiper-animate-duration="1.0s">
+
+            <img src="image/H5_5b.png" class="tittle5-img2 ani" swiper-animate-effect="bounceInUp " swiper-animate-duration="1.5s">
+
+            <img src="image/H5_5c.png" class="tittle5-img3 ani" swiper-animate-effect="bounceInUp " swiper-animate-duration="1.5s">
+
+            <img class="in_down" src="image/in_up.png">
+        </section>
+
+        <!--6画面-->
+        <section class="swiper-slide page_all">
+            <img src="image/H5_6a.png" class="tittle6-img1 ani" swiper-animate-effect="bounceInDown"
+            swiper-animate-duration="1.0s">
+
+            <img src="image/H5_6b.png" class="tittle6-img2 ani" swiper-animate-effect="zoomIn"
+                 swiper-animate-duration="2.0s">
+
+            <img src="image/H5_6c.png" class="tittle6-img3 ani" swiper-animate-effect="bounceInUp " swiper-animate-duration="1.5s">
+
+            <img src="image/H5_6d.png" class="tittle6-img4 ani" swiper-animate-effect="bounceInDown " swiper-animate-duration="1.7s">
+
+        </section>
+
+    </div>
+</div>
+
+<script rel="script" type="text/javascript" src="js/swiper.min.js"></script>
+<script src="js/swiper.animate.min.js"></script>
+<script src="js/rem.js"></script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+    window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {},
+            "bdText": "",
+            "bdMini": "1",
+            "bdMiniList": ["tsina", "weixin", "mail", "linkedin", "copy", "print"],
+            "bdPic": "",
+            "bdStyle": "0",
+            "bdSize": "32"
+        }, "slide": {"type": "slide", "bdImg": "3", "bdPos": "left", "bdTop": "100"}
+    };
+    with (document) 0[
+        (getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)
+        ];
+</script>
+
+<script>
+    //    全屏滑动
+    let swiper = new Swiper('.home', {
+        direction: 'vertical',
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        mousewheel: true,
+        on: {
+            init: function () {
+                swiperAnimateCache(this);
+                swiperAnimate(this);
+            },
+            slideChangeTransitionEnd: function () {
+                swiperAnimate(this);
+            }
+        }
+    });
+
+    //   音乐盒子 音乐自动播放
+    // function audioAutoPlay(id) {
+    //     var audio = document.getElementById(id);
+    //     play = function () {
+    //         audio.play();
+    //         document.removeEventListener("touchstart", play, false);
+    //     };
+    //     audio.play();
+    //     //获取微信初始化完成
+    //     document.addEventListener("WeixinJSBridgeReady", function () {
+    //         play();
+    //     }, false);
+    //
+    //     // 获取易信初始化完成
+    //     document.addEventListener('YixinJSBridgeReady', function () {
+    //         play();
+    //     }, false);
+    //
+    //     //手机触碰屏幕
+    //     document.addEventListener("touchstart", play, false);
+    // }
+    // audioAutoPlay('bgMusic');
+
+    //点击播放暂停
+    // $(function () {
+    //     $(".song img").click(function () {
+    //         var music = document.getElementById("bgMusic");
+    //         if (music.paused) {
+    //             music.play();
+    //             $(this).css("animation", "cicle 1s infinite linear")
+    //             $(this).css("-webkit-animation", "cicle 1s infinite linear")
+    //         } else {
+    //             music.pause();
+    //             $(this).css("animation", "none")
+    //         }
+    //     });
+    // })
+
+</script>
+<script>
+
+</script>
+
+</body>
+</html>

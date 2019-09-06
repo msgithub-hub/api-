@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>接东西</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="css/common.css" rel="stylesheet"/>
+    <link href="css/game.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<div class="content_body">
+
+    <!--<audio id="boomAudio" src="image/boomAudio.mp3"></audio>-->
+    <!--游戏开始3s倒计时-->
+    <div class="coutDown">
+        <span class="four_seconds">4</span>
+    </div>
+
+    <!--主页面 最顶端头像、游戏进行的时间-->
+    <div class="activity">
+        <div class="top">
+            <div class="left">
+                <img src="image/head.png" class="avatar"/>
+                <p class="score" score="0">0分</p>
+            </div>
+            <div class="right">
+                <p class="sanShi">倒计时：10s</p>
+            </div>
+        </div>
+        <canvas id="canvas"></canvas>
+        <div class="jia"></div>
+    </div>
+
+    <!--得多少分的模态框-->
+    <div class="mask">
+        <div class="result">
+            <div class="result-score">
+                <p class="point">0</p>
+            </div>
+            <!--继续来一把-->
+            <img src="image/againBorder.png" class="again "/>
+            <!--查看排行榜-->
+            <img src="image/nameList_border.png" class="rankBtn"/>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    //下落速度
+    let speed = 3;
+</script>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script src="js/money.js"></script>
+<script src="js/wan.js"></script>
+<script src="js/body.js"></script>
+<script>
+    let canvas = document.getElementById('canvas');
+    canvas.width = $('body').width();
+    canvas.height = $('body').height();
+    let context = canvas.getContext('2d');
+    let canvasWidth = $('body').width();
+    let canvasHeight = $('body').height();
+    let wanWidth = $('body').width() / 100 * 24.933;
+    let wanHeight = $('body').width() / 100 * 18.133;
+    let wanY = $('body').height() - wanHeight;
+    let score = 0;
+    let timer = null;
+    let time1 = 3;
+    let isEnd = false; //游戏结束
+    let body;
+    // 添加音乐
+    // let boomAudio = document.getElementById("boomAudio");
+
+    function animate(timer) {
+        body.clear();
+        body.draw();
+        if (!isEnd) {
+            clearInterval(timer);
+        }
+
+    }
+
+    $(function () {
+        body = new Body();
+        timedCount1();
+        // 添加音效
+        // audioAutoPlayPlan('boomAudio');
+
+
+        $('.again').click(function () {
+            //再玩一次
+            location.reload();
+        });
+        $('.rankBtn').click(function () {
+            //看排行榜
+            location.href = "rank.html"
+        });
+    })
+
+    let time = 10;
+    let clock;
+
+    // 游戏结束事件
+    function timedCount() {
+        if (time <= 0) {
+            clearTimeout(clock);
+            this.isEnd = true;
+            setTimeout(function () {
+                // 你得了多少分
+                $('.point').text($('.score').text());
+                $('.mask').show();
+                $('#canvas').remove();
+                $('.score').hide()
+                $('.jia').hide()
+            }, 500);
+        } else {
+            time--;
+            $(".right p").html("倒计时：" + time + "s");
+            clock = setTimeout("timedCount()", 1000);
+        }
+    }
+
+    // 开场前3秒倒计时
+    function timedCount1() {
+        if (time1 > 0) {
+            time1--;
+            $('.coutDown span').text(time1);
+            clock = setTimeout("timedCount1()", 1000);
+        } else {
+            clearTimeout(clock);
+            var ci = 0;
+            $('.coutDown').hide();
+            timedCount();
+            timer = setInterval(function () {
+                if (ci % 30 === 0) {
+                    body.addMoney();
+                }
+                ci++;
+                animate();
+            }, 1000 / 60);
+        }
+
+    }
+</script>
+
+<!--<script type="text/javascript">-->
+<!--let canvas = document.getElementById('canvas');-->
+<!--canvas.width = $('body').width();-->
+<!--canvas.height = $('body').height();-->
+<!--let context = canvas.getContext('2d');-->
+<!--let canvasWidth = $('body').width();-->
+<!--let canvasHeight = $('body').height();-->
+<!--let wanWidth = $('body').width() / 100 * 24.933;-->
+<!--let wanHeight = $('body').width() / 100 * 18.133;-->
+<!--let wanY = $('body').height() - wanHeight;-->
+<!--let score = 0;-->
+
+<!--// let time_login = 3;-->
+<!--let time = 10;  //30秒倒计时-->
+<!--let clock=false;-->
+<!--let isEnd = false; //游戏结束-->
+<!--let body;-->
+<!--$(function () {-->
+<!--// 开始页面3秒倒计时-->
+<!--// let timer = setInterval(function () {-->
+<!--//     //判断时间到了没-->
+<!--//     if (time_login === 0) {-->
+<!--//         clearInterval(timer);//清除3s定时器-->
+<!--//         // clearInterval(clock);//让30秒定时器不工作-->
+<!--//         $('.coutDown').fadeOut();-->
+<!--//         return;-->
+<!--//     }-->
+<!--//     time_login&#45;&#45;;-->
+<!--//     $("<span class='four_seconds'>" + time_login + "</span>").replaceAll('.four_seconds');-->
+<!--// }, 1000);-->
+
+<!--// 30秒倒计时事件-->
+<!--clock = setInterval(function () {-->
+<!--// 判断时间到了没-->
+<!--if (time <=1) {-->
+<!--clearInterval(clock);//清除30秒定时器-->
+<!--// 让得了多少分的模态框显示-->
+<!--$('.mask').fadeIn();-->
+<!--// 显示你得了多少分-->
+<!--$('.point').text($('.score').text());-->
+<!--// 时间到了，提交ajax成绩-->
+<!--}-->
+<!--time&#45;&#45;;-->
+<!--$("<p class='sanShi'>倒计时：" + time + "s</p>").replaceAll('.sanShi');-->
+<!--}, 1000);-->
+<!--// 点击按钮再来玩一把-->
+<!--$('.again').click(function () {-->
+<!--//再次体验-->
+<!--location.reload();-->
+<!--});-->
+<!--// 查看排行榜-->
+<!--$('.rankBtn').click(function () {-->
+<!--//看排行榜-->
+<!--location.href = "name_list.html"-->
+<!--});-->
+<!--$('.result-score').click(function () {-->
+<!--$('.mask').fadeOut()-->
+<!--});-->
+
+
+<!--})-->
+
+<!--// $.ajax({-->
+<!--//     url: '',-->
+<!--//     type: 'post',-->
+<!--//     data: {'all_score': all_score},-->
+<!--//     dataType: 'json',-->
+<!--//     success: function (res) {-->
+<!--//         if (res.status == 200) {-->
+<!--//             $('.point').text(+all_score);-->
+<!--//             $('.mask').show();-->
+<!--//         } else if (res.status == 500) {-->
+<!--//             alert('网络出错，成绩提交失败');-->
+<!--//         }-->
+<!--//     },-->
+<!--//     error: function (xhr, textStatus) {-->
+<!--//         layer.msg('系统出错，请稍后重试,谢谢!', {-->
+<!--//             icon: 2,-->
+<!--//             time: 2000-->
+<!--//         });-->
+<!--//     }-->
+<!--// })-->
+
+
+<!--</script>-->
+</body>
+</html>

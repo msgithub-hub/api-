@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>昱科环球</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/animate.css">-->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="content_body">
+    <img src="image/logo_bottom.png" class="logo_bottom">
+    <!--1问题-->
+    <div class="question question1" data-tid="1">
+        <div class="question_tittle">
+            <p class="tittle1_one"><b>1.职工应该去哪种医疗卫生机构进行职业病诊断？</b></p>
+        </div>
+        <div style="clear: both"></div>
+
+        <div class="question_answer">
+            <ul class="answer">
+                <li class="wave">
+                    <img src="image/no_check.png" index="0" class="no_check">
+                    <img src="image/yes_check.png" index="0" class="yes_check none">
+                    <p class="key" index="0">A.4月22日世界地球日</p>
+                    <div style="clear: both"></div>
+                </li>
+                <li class="wave">
+                    <img src="image/no_check.png" index="1" class="no_check">
+                    <img src="image/yes_check.png" index="1" class="yes_check none">
+                    <p class="key" index="1">B.4月22日世界地球日</p>
+                    <div style="clear: both"></div>
+                </li>
+                <li class="wave">
+                    <img src="image/no_check.png" index="2" class="no_check">
+                    <img src="image/yes_check.png" index="2" class="yes_check none">
+                    <p class="key" index="2">C.5月11日世界地球日是什么时候世界地球日是什么时候</p>
+                    <div style="clear: both"></div>
+                </li>
+            </ul>
+            <p class="next wave" onclick="">下一题</p>
+        </div>
+    </div>
+
+
+
+</div>
+
+<!--模态框-->
+<div class="modal none">
+    <!--规则-->
+    <img src="image/rule.png" class="rule none">
+
+    <!--未通过测试-->
+    <div class="vmark none">
+        <img src="image/tittle.png" class="tittle_flower">
+        <img src="image/pass.png" class="pass">
+        <p class="word_tittle"><b>很遗憾</b></p>
+        <p class="word_tittle_one">答对了<b style="font-size: 6vw;">0</b>道题,未通过测试</p>
+        <p class="word_tittle_two wave" onclick="javascript:window.open('index.html','_self')"><b>再答一次</b></p>
+    </div>
+
+    <!--通过测试-->
+    <div class="success none">
+        <img src="image/tittle.png" class="tittle_flower">
+        <img src="image/finshed.png" class="finshed">
+        <p class="word_tittle_three">您本次共答对<b style="font-size: 6vw;">0</b>道题,通过测试您获得的随机字母是:</p>
+        <div class="english">
+            <img src="image/dian.png" class="english_word none">
+            <img src="image/E.png" class="english_word ">
+            <img src="image/W.png" class="english_word none">
+        </div>
+        <p class="word_tittle_four wave" onclick="javascript:window.open('','_self')"><b>我知道了</b></p>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js"></script>
+<script>
+    function isSuccess(index, result) {
+        let r = '';
+        switch (index) {
+            case 0: r = 'A'; break;
+            case 1: r = 'B'; break;
+            case 2: r = 'C'; break;
+        }
+        return result === r;
+
+    }
+    function formatAnswer(answer) {
+        switch (answer) {
+            case 'A': return 0;
+            case 'B': return 1;
+            case 'C': return 2;
+        }
+    }
+    function formatIndex(answer) {
+        switch (answer) {
+            case 0: return 'A';
+            case 1: return 'B';
+            case 2: return 'C';
+        }
+    }
+    $(function () {
+        // 规则窗口弹出显现
+        setTimeout(function () {
+            $('.modal').fadeIn();
+            $('.rule').fadeIn();
+        }, 500);
+        $('.rule').on('click',function () {
+            $('.modal').fadeOut();
+        });
+        $('.word_tittle_two').click(function () {
+            $('.modal').fadeOut();
+        });
+        $('.word_tittle_four').click(function () {
+            $('.modal').fadeOut();
+        });
+
+        // 假设A为正确答案
+        let result = 'A';
+        let nowSelectResult = '';
+        let isSelectDisabled = false;
+
+        // 是否答题的判断
+        $('.next').click(function () {
+            if(nowSelectResult == null||nowSelectResult == ''){
+                layer.alert('请答完题目在点击下一题')
+            }else{
+                javascript:location=location;
+            }
+        });
+
+        // 点击选择按钮
+        $('.no_check').click(function (e) {
+            if (isSelectDisabled) return;
+            $('.no_check').show();
+            // $('.yes_check').hide();
+            let index = Number($(e.target).attr('index'));
+            nowSelectResult = formatIndex(index);
+            $(this).hide();
+            $('.yes_check').eq(index).show().siblings('.yes_check').hide();
+            let isSuccess = window.isSuccess(index, result);
+            let resultIndex = formatAnswer(result);
+            $('.key').eq(resultIndex).css({'color': '#f15a25'});
+
+            if (isSuccess) {
+
+            } else {
+                $('.key').eq(resultIndex).append("<p class='key_red'>正确答案</p>");
+            }
+            isSelectDisabled = true;
+
+            $.ajax({
+                type: "get",
+                url: "",
+                dataType: "json",
+                data: {
+                },
+                success: function () {
+
+                },
+                error: function () {
+                    alert("ajax数据有误！")
+                }
+            });
+
+        });
+
+
+
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+
+body {
+    /*background: black;*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/*音乐盒*/
+.song {
+    width: 12%;
+    height: 12%;
+    /*background: red;*/
+    position: fixed;
+    right: 7%;
+    top: 5%;
+    z-index: 10000;
+}
+
+#nyMusic_btn {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    z-index: 900;
+    right: 15px;
+    top: 5px;
+    border: 1px solid #fff;
+    border-radius: 30px;
+
+    animation: cicle 1s infinite linear;
+    -moz-animation: cicle 1s infinite linear;
+    /* Firefox */
+    -webkit-animation: cicle 1s infinite linear;
+    /* Safari ºÍ Chrome */
+    -o-animation: cicle 1s infinite linear;
+    /* Opera */
+}
+
+@keyframes cicle {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes cicle {
+    /* Firefox */
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes cicle {
+    /* Safari ºÍ Chrome */
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes cicle {
+    /* Opera */
+    0% {
+        -o-transform: rotate(0deg);
+    }
+    100% {
+        -o-transform: rotate(360deg);
+    }
+}
+
+
+/*下箭头*/
+.in_down {
+    width: 10%;
+    height: auto;
+    position: absolute;
+    bottom: 20px;
+    left: 45%;
+    z-index: 1002;
+    animation: myfirst 1s infinite;
+    -moz-animation: myfirst 1s infinite;
+    /* Firefox */
+    -webkit-animation: myfirst 1s infinite;
+    /* Safari ºÍ Chrome */
+    -o-animation: myfirst 1s infinite;
+    /* Opera */
+}
+
+@keyframes myfirst {
+    0% {
+        bottom: 20px;
+    }
+    50% {
+        bottom: 25px;
+    }
+    100% {
+        bottom: 20px;
+    }
+}
+
+@-moz-keyframes myfirst {
+    /* Firefox */
+    0% {
+        bottom: 20px;
+    }
+    50% {
+        bottom: 25px;
+    }
+    100% {
+        bottom: 20px;
+    }
+}
+
+@-webkit-keyframes myfirst {
+    /* Safari ºÍ Chrome */
+    0% {
+        bottom: 20px;
+    }
+    50% {
+        bottom: 25px;
+    }
+    100% {
+        bottom: 20px;
+    }
+}
+
+@-o-keyframes myfirst {
+    /* Opera */
+    0% {
+        bottom: 20px;
+    }
+    50% {
+        bottom: 25px;
+    }
+    100% {
+        bottom: 20px;
+    }
+}
+.home{
+    width: 100%;
+    height: 100%;
+}
+/*1首页*/
+.page_all{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url(../image/bg.jpg) no-repeat center center;
+    background-size: 100% 100%;
+    position: relative;
+    overflow: hidden;
+    /*-webkit-overflow-scrolling: touch;*/
+}
+
+.tittle_one{
+    width: 15%;
+    height: auto;
+    margin-top:1rem
+}
+.tittle_two{
+    width: 70%;
+    height: auto;
+    position:relative;
+    z-index:10;
+   margin-top:2rem
+}
+.tittle_three{
+    width: 94%;
+    height: auto;
+    position: absolute;
+    left: 3%;
+    bottom: 0vh;
+}
+
+
+/*2画面*/
+
+
+.word1{
+    width: 35%;
+    height: auto;
+    margin-left:120px;
+    margin-top:2rem;
+}
+.word2{
+    width: 90%;
+    height: auto;
+    margin-top:2rem;
+    /*position: absolute;*/
+    /*left: 7.5%;*/
+    /*top: 30vh;*/
+}
+
+/*3画面*/
+
+.pic3-img1{
+    width: 35%;
+    height: auto;
+    margin-left:120px;
+    margin-top:2rem;
+    /*position: absolute;*/
+    /*left: 10%;*/
+    /*top: 12vh;*/
+}
+.pic3-img2{
+    width: 100%;
+    height: auto;
+    margin-top:2rem;
+    /*position: absolute;*/
+    /*left: 10%;*/
+    /*top: 52vh;*/
+}
+.pic3-img3{
+    width: 90%;
+    height: auto;
+    position: absolute;
+    left: 5%;
+    bottom: 0vh;
+}
+
+
+/*4画面*/
+
+.tittle4-img1{
+    width: 35%;
+    height: auto;
+    margin-left:120px;
+    margin-top:2rem;
+}
+.tittle4-img4{
+    width: 89%;
+    height: auto;
+    margin-top:1.2rem;
+    /*position: absolute;*/
+    /*left: 10%;*/
+    /*top: 28vh;*/
+}
+
+
+/*5画面*/
+
+.tittle5-img1{
+    width: 35%;
+    height: auto;
+    margin-left:120px;
+    margin-top:2rem;
+}
+.tittle5-img2{
+    width: 85%;
+    height: auto;
+    margin-top:2.5rem;
+}
+.tittle5-img3{
+    width: 100%;
+    height: auto;
+    margin-top:2rem;
+}
+
+
+/*6画面*/
+
+.tittle6-img1{
+    width: 42%;
+    height: auto;
+    margin-top:2rem;
+    /*position: absolute;*/
+    /*left: 30%;*/
+    /*top: 15vh;*/
+}
+
+.tittle6-img2{
+    width: 50%;
+    height: auto;
+    margin-top:2rem;
+}
+
+
+.tittle6-img3{
+    width: 40%;
+    height: auto;
+    margin-top:2rem;
+    position:relative;
+    z-index:10;
+    
+}
+.tittle6-img4{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0%;
+    bottom: 0vh;
+}

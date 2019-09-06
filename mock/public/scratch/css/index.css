@@ -1,0 +1,171 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    position: relative;
+
+}
+
+.content_body {
+    width: 100%;
+    height: 100%;
+    background: url("../image/bg.jpg") no-repeat;
+    background-size: 100% 100%;
+    /*padding-bottom: 0.5vh;*/
+    /*padding-bottom: 2vh;*/
+    position: relative;
+    /*overflow: hidden;*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.logo {
+    position: absolute;
+    width: 45%;
+    height: auto;
+    left: 5%;
+    top: 3vh;
+}
+
+.tittle {
+    width: 70%;
+    height: auto;
+    position: absolute;
+    left: 15%;
+    top: 17vh;
+    z-index: 10;
+}
+
+/*刮奖区*/
+.box {
+    width: 75%;
+    height: 6rem;
+    position: absolute;
+    left: 12.5%;
+    top: 56vh;
+    /*background: #ffb8e5;*/
+    z-index: 10;
+}
+
+.content {
+    /*z-index: 10;*/
+    position: relative;
+    width: 95%;
+    height: 6rem;
+    margin: 0 auto;
+    /*background: #f30086;*/
+    /*background: yellow;*/
+}
+
+#mask_img_bg {
+    /*position: absolute;*/
+    width: 95%;
+    height: 6rem;
+    margin: 0 auto;
+    /*left: 0.2rem;*/
+    /*top: 0.2rem;*/
+    /*bottom: 0.2rem;*/
+    /*right: 0.2rem;*/
+    /*background: #fff;*/
+}
+
+.no_get_btn, .yes_get_btn {
+    /*display: block;*/
+    width: 90%;
+    height: 5rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+}
+
+#redux {
+    z-index: 22;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /*padding: 0.2rem;*/
+    box-sizing: border-box;
+    width: 90%;
+    height: 5rem;
+
+}
+
+.logo_bottom {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+
+}
+
+/*模态框*/
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+.rule {
+    width: 75%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+/*没中奖; 奖品送完；活动结束*/
+.no_goods,.end_goods,.jishu {
+    width: 75%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+/*通过测试*/
+.success {
+    width: 70%;
+    height: 80vw;
+    /*background-color: yellow;*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.yes_goods{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 1.5rem auto;
+}
+
+
+.go_btn {
+    display: block;
+    width: 80%;
+    height: auto;
+    margin: 1rem auto;
+}
